@@ -4,7 +4,6 @@
       <div class="warningTable">
         <p class="loadingIcon"><i class="fas fa-cog fa-spin fa-5x"></i></p>
         <p class="warning">Loading...</p>
-        
       </div>
     </div>
     <app-title></app-title>
@@ -123,6 +122,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font-family: sans-serif;
 }
 
 .contain {
@@ -145,7 +145,7 @@ video {
 }
 
 .warningTable{
-  width: 40%;
+  width: 60%;
   height: 300px;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.7);

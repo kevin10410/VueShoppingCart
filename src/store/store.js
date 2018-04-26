@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
         previousPage: 0,
         showingPage: 10,
         loading: false,
+        currentType:'page'
     },
     getters: {
         totalPrice: state => {
@@ -59,6 +60,12 @@ export const store = new Vuex.Store({
             state.previousPage = 90;
             state.showingPage = 100;
         },
+        goPage: state => {
+            state.currentType = 'page';
+        },
+        goProduct: state => {
+            state.currentType = 'product';
+        }, 
     },
     actions: {
         addItem: ({ commit }, item) => {
@@ -87,6 +94,12 @@ export const store = new Vuex.Store({
         },
         toLastPage: ({ commit }) => {
             commit('toLastPage')
+        },
+        goPage: ({ commit }) => {
+            commit('goPage')
+        },
+        goProduct: ({ commit }) => {
+            commit('goProduct')
         },
     }
 })

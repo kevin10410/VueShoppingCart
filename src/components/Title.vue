@@ -6,7 +6,7 @@
 <style scoped>
     .title{
         text-align: center;
-        padding: 20px 0 ;
+        padding: 10px 0 ;
     }
     p{
         font-size: 2rem;

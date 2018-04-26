@@ -1,7 +1,7 @@
 <template>
     <div class="shoppingCart">
         <p class="title">選購清單</p>
-        <p>總共金額: {{totalPrice}}</p>
+        <p>總金額: {{totalPrice}}</p>
         <ul v-if="shoppingCart.length!==0" class="col-lg-9 col-md-9 col-sm-12 col-12">
             <li v-for="(item, index) in shoppingCart" :key="index">
               <img class="itemPic" :src="`http://a.ecimg.tw/${item.picB}`">
@@ -12,7 +12,7 @@
                   <button class="btn btn-primary" @click="removeItem(index)">移除商品</button>
                   <!-- <button @click="modifyNum({item:item, index:index})">修改商品數量</button> -->
                   <label>選購商品數量:</label>
-                  <select class="itemCounts" @input="modifyNum({item:item, index:index})" v-model="item.count">
+                  <select class="itemCounts" v-model="item.count" @change="modifyNum({item:item, index:index})">
                   <!-- <option selected disabled :value="0">選擇數量</option> -->
                     <option v-for="num in 9" :value="num" :key="num">{{num}}</option>
                   </select>

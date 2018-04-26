@@ -1,9 +1,12 @@
 <template>
-    <div class="header">
-        <div class="pageSelector">
-            <button class="btn btn-default" @click="changePage(selectPage - 1)"><i class="fas fa-caret-left"></i></button>
-            <button class="btn btn-default" :class="{selectPage:selectPage==num}" v-if="num > previousPage" v-for="num in showingPage" :key="num" @click="changePage(num)">{{num}}</button>
-            <button class="btn btn-default" @click="changePage(selectPage + 1)"><i class="fas fa-caret-right"></i></button>
+    <div class="header row justify-content-center">
+        <div class="logo col-lg-10 col-md-10 col-sm-10 col-10">
+          <div class="shadow"></div>
+        </div>
+        <div class="pageSelector col-lg-10 col-md-10 col-sm-10 col-10">
+            <button class="btn btn-default change" @click="changePage(selectPage - 1)"><i class="fas fa-caret-left"></i></button>
+            <button class="btn btn-default pick" :class="{selectPage:selectPage==num}" v-if="num > previousPage" v-for="num in showingPage" :key="num" @click="changePage(num)">{{num}}</button>
+            <button class="btn btn-default change" @click="changePage(selectPage + 1)"><i class="fas fa-caret-right"></i></button>
         </div>
         <div class="productTable">
             <ul class="row productList">  
@@ -41,7 +44,7 @@ export default {
   },
   methods: {
     changePage(page) {
-      if (page > 0 && page < 100) {
+      if (0 < page && page <= 100) {
         this.getProductInfo(page);
       }
       console.log(this.previousPage);
@@ -54,18 +57,24 @@ export default {
       axios
         .get(url)
         .then(res => {
-          this.$store.state.allProduct = res.data.prods;
-          console.log(this.$store.state.allProduct);
-          setTimeout(() => {
-            if (page > this.showingPage) {
-              this.$store.commit("nextTenPage");
-            } else if (page <= this.previousPage) {
-              this.$store.commit("prevTenPage");
-            } else {
+          if (res.status === 200) {
+            this.$store.state.allProduct = res.data.prods;
+            console.log(res);
+            if (this.$store.state.currentType === "product") {
+              this.$store.commit("goPage");
             }
-            this.$store.commit("loadingSwitch");
-            this.$store.commit("selectPage", page);
-          }, 500);
+            setTimeout(() => {
+              if (page > this.showingPage) {
+                this.$store.commit("nextTenPage");
+              } else if (page <= this.previousPage) {
+                this.$store.commit("prevTenPage");
+              } else {
+              }
+              this.$store.commit("loadingSwitch");
+              this.$store.commit("selectPage", page);
+              this.$router.push(`/page/${page}`);
+            }, 500);
+          }
         })
         .catch(err => {
           console.log(err);
@@ -80,31 +89,64 @@ export default {
 </script>
 
 <style scoped>
+.logo {
+  /* background: brown; */
+  height: 150px;
+  background-image: url("../assets/ac-video-poster_848x480.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.shadow {
+  width: calc(100% - 30px);
+  border-radius: 10px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+
 .pageSelector {
   text-align: center;
 }
 
 .pageSelector .btn {
   width: 45px;
-  margin: 0 5px;
+  margin: 5px;
   border: 1px solid black;
+  outline: none;
+  background: #ffffff;
+  color: black;
 }
 
-.pageSelector .btn:hover {
-  background: aqua;
+.pageSelector .pick:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.2s linear;
 }
 
 .pageSelector .btn.selectPage {
-  background: aqua;
+  background: #e5e5e5;
+}
+
+.change {
+  background-color: #f5f5f5;
+  transition: background-color 0.2s linear;
+}
+
+.change:hover {
+  background-color: #e5e5e5;
+  transition: background-color 0.2s linear;
 }
 
 .productTable {
-  padding: 20px 0;
   display: flex;
   justify-content: center;
 }
 
 .productList {
   width: 80%;
+  padding: 10px 0;
 }
 </style>
