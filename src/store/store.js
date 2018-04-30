@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
         currentPage: 1,
         previousPage: 0,
         showingPage: 10,
-        loading: true,
+        loading: false,
         currentType:'page',
         currentProduct:{},
         currentBrand:'Apple',
