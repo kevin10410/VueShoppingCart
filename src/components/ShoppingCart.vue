@@ -52,7 +52,7 @@ export default {
 
 ul {
   margin-top: 20px;
-  padding: 0;
+  padding: 0 0 10px 0;
 }
 </style>
 
