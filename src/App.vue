@@ -123,6 +123,10 @@ video {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
+body{
+  min-height: 100vh;
+}
+
 .contain {
   position: relative;
   overflow-x: hidden;
