@@ -132,7 +132,7 @@ video {
   position: absolute;
   width: 100%;
   min-height: 100vh;
-  height: 100%;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
   display: flex;
