@@ -49,7 +49,9 @@ export default {
     },
     cartPage() {
       let vm = this;
-      setTimeout(()=>{vm.$store.commit("goPage")}, 500);
+      setTimeout(() => {
+        vm.$store.commit("goPage");
+      }, 500);
       this.$router.push(`/cart`);
     },
     add() {
@@ -64,23 +66,23 @@ export default {
     },
     addToShoppingCart(currentProduct) {
       let index = this.$store.state.shoppingCart
-            .map(item => {
-              return item.Id;
-            })
-            .indexOf(currentProduct.Id);
-        if (index !== -1) {
+        .map(item => {
+          return item.Id;
+        })
+        .indexOf(currentProduct.Id);
+      if (index !== -1) {
         // let check = this.$store.state.shoppingCart.some(item => {
         //   return item.id === this.item.Id;
         // });
         // if (check) {
-          
-          //   console.log(index);
-            this.$store.commit("replaceItem", { item: this.toBuy, index: index });
-            window.alert('已修改商品數量!')
-        } else {
-            this.$store.commit("addItem", this.toBuy);
-            window.alert('加入購物車成功!')
-        }
+
+        //   console.log(index);
+        this.$store.commit("replaceItem", { item: this.toBuy, index: index });
+        window.alert("已修改商品數量!");
+      } else {
+        this.$store.commit("addItem", this.toBuy);
+        window.alert("加入購物車成功!");
+      }
     }
   },
   computed: {
@@ -97,9 +99,13 @@ export default {
       return buying;
     },
     describe() {
-
-      return this.$store.state.currentProduct.describe//.replace(/↵/, "<br/>");
+      return this.$store.state.currentProduct.describe; //.replace(/↵/, "<br/>");
     }
+  },
+  mounted() {
+    // console.log(document.body.scrollTop);
+    // document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 };
 </script>
@@ -109,7 +115,7 @@ export default {
   margin: 0;
 }
 
-.links{
+.links {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -125,7 +131,7 @@ export default {
   margin: 5px 0;
 }
 
-.return:hover{
+.return:hover {
   color: #83521e;
 }
 
@@ -226,24 +232,24 @@ p {
   color: #fff;
 }
 
-.buy{
+.buy {
   cursor: pointer;
 }
 
-.cartIcon{
+.cartIcon {
   display: inline-block;
   color: #5d3b25;
   transform: translateX(50px);
   transition: color 0.25s linear, transform 0.25s linear;
 }
 
-.shoppingCart button:hover .cartIcon{
+.shoppingCart button:hover .cartIcon {
   color: #fff;
   transform: translateX(0px);
   transition: color 0.15s linear, transform 0.15s linear;
 }
 
-.describe{
+.describe {
   white-space: pre-wrap;
   font-size: 0.8rem;
   color: #a6917f;
