@@ -106,6 +106,7 @@ export default {
 <style scoped>
 .detail {
   padding: 10px 0;
+  margin: 0;
 }
 
 .links{
@@ -139,6 +140,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0;
 }
 
 p {

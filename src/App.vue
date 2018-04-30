@@ -120,11 +120,12 @@ video {
   font: inherit;
   vertical-align: baseline;
   font-family: sans-serif;
-  
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 .contain {
   position: relative;
+  overflow-x: hidden;
 }
 
 .loading{
@@ -136,6 +137,14 @@ video {
   z-index: 1;
   display: flex;
   justify-content: center;
+}
+
+body:-webkit-scrollbar { 
+    display: none; 
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 .loadingIcon{

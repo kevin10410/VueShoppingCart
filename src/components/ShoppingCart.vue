@@ -13,9 +13,6 @@
 import ShoppingItem from "./ShoppingItem.vue";
 export default {
   methods: {
-    removeItem(index) {
-      this.$store.commit("removeItem", index);
-    },
     modifyNum(obj) {
       this.$store.commit("replaceItem", { item: obj.item, index: obj.index });
     }
@@ -35,6 +32,10 @@ export default {
 };
 </script>
 <style scoped>
+.row{
+  margin: 0;
+}
+
 .shoppingCart {
   text-align: center;
 }
@@ -51,6 +52,7 @@ export default {
 
 ul {
   margin-top: 20px;
+  padding: 0;
 }
 </style>
 
