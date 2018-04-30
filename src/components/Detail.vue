@@ -111,6 +111,7 @@ export default {
 .links{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .return {
