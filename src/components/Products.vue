@@ -101,7 +101,7 @@ export default {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   position: relative;
 }
 
