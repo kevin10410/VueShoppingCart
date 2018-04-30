@@ -189,7 +189,7 @@ p {
 }
 
 .numButton {
-  padding: 4px 4.5px;
+  padding: 4px 6.5px;
   border: 1px solid #ccc;
   background: #eee;
   color: #666;
