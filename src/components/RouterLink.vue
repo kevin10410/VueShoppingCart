@@ -62,7 +62,7 @@ export default {
   color: #9c9c9c;
   padding: 0 5px;
   width: 210px;
-  height: 45px;
+  height: 35px;
 }
 
 p {
