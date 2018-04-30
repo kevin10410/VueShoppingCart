@@ -56,7 +56,7 @@ export default {
 .product {
   padding: 10px;
   list-style: none;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .box{
