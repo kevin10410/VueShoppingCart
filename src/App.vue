@@ -137,12 +137,11 @@ body{
   position: absolute;
   width: 100%;
   min-height: 100vh;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 body:-webkit-scrollbar { 
@@ -158,11 +157,12 @@ body:-webkit-scrollbar {
 }
 
 .warningTable{
-  width: 40vh;
+  position: absolute;
+  top: 150px;
+  width: 60%;
   height: 300px;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.7);
-  margin-top: 200px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
