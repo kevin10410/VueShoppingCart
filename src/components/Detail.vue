@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="currentProduct.Id !== undefined">
         <div class="detail row justify-content-center">
             <div class="detailInfo col-lg-10 col-md-10 col-sm-10 col-10">
                 <div class="links">
@@ -103,9 +103,13 @@ export default {
     }
   },
   mounted() {
+    if(this.currentProduct.Id === undefined) {
+      this.$router.push(`/page/1`);
+    } else {
+      window.scrollTo(0, 0);
+    }
     // console.log(document.body.scrollTop);
     // document.body.scrollTop = 0;
-    window.scrollTo(0, 0);
   }
 };
 </script>

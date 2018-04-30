@@ -186,11 +186,15 @@ export default {
 }
 
 .brandSelector select {
+  padding: 5px;
+  border: none;
+  outline: none;
   margin-bottom: 10px;
   width: 100%;
-  border: 1px solid #eee;
+  border: 2px solid #eee;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-align: center;
+  -webkit-appearance:none;
 }
 
 .brandSelector select option{
