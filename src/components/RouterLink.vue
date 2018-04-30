@@ -50,6 +50,7 @@ export default {
 .links {
   padding: 10px 0 5px 0;
   text-align: center;
+  margin: 0;
 }
 
 .linkBtn {
