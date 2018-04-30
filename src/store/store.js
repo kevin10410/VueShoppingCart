@@ -11,13 +11,17 @@ export const store = new Vuex.Store({
         previousPage: 0,
         showingPage: 10,
         loading: false,
-        currentType:'page'
+        currentType:'page',
+        currentProduct:{},
     },
     getters: {
         totalPrice: state => {
             return state.shoppingCart.reduce(function (accumulator, currentValue) {
                 return accumulator + currentValue.price * currentValue.count;
             }, 0);
+        },
+        getCurrentDetail: state => {
+            return state.currentProduct;
         }
     },
     mutations: {
@@ -66,6 +70,11 @@ export const store = new Vuex.Store({
         goProduct: state => {
             state.currentType = 'product';
         }, 
+        selectProduct: (state, item) => {
+            console.log('item', item)
+            state.currentProduct = item;
+            console.log(state.currentProduct);
+        }
     },
     actions: {
         addItem: ({ commit }, item) => {
@@ -101,5 +110,8 @@ export const store = new Vuex.Store({
         goProduct: ({ commit }) => {
             commit('goProduct')
         },
+        selectProduct: ({commit}, item) => {
+            commit('selectProduct', item)
+        }
     }
 })

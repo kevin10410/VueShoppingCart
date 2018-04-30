@@ -1,23 +1,32 @@
 <template>
     <transition name="fade">
-    <div class="links" v-if="currentType !== 'product'">
+    <div class="links row" v-if="currentType !== 'product'">
+        <div class="offset-lg-1 offset-md-1 col-lg-5 col-md-5 col-sm-12 col-12">
+            <p>|</p>
         <router-link 
         tag="button" 
         :to="`/page/${this.currentPage}`" 
-        class="btn btn-primary"
-        active-class="btn btn-success"
+        class="linkBtn"
+        active-class="active"
         >產品列表
         </router-link>
+        <p>|</p>
+        </div>
         
+        <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+            <p>|</p>
         <router-link 
         tag="button" 
         :to="'/cart'" 
-        class="btn btn-primary"
-        active-class="btn btn-success"
-        >進入購物車
-        <span v-if="shoppingCart.length === 0"><i class="fas fa-shopping-cart"></i></span>
+        class="linkBtn"
+        active-class="active"
+        >購物車
+        <span v-if="shoppingCart.length === 0"><i class="fas fa-shopping-cart"></i> ({{shoppingCart.length}})</span>
         <span v-else><i class="fas fa-cart-arrow-down"></i> ({{shoppingCart.length}})</span>
         </router-link>
+        <p>|</p>
+        </div>
+        
     </div>
     </transition>
 </template>
@@ -43,10 +52,33 @@ export default {
   text-align: center;
 }
 
-.btn {
+.linkBtn {
   outline: none;
   margin: 0 10px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  background: #ffffff;
+  color: #9c9c9c;
+  padding: 0 5px;
+  width: 210px;
+  height: 45px;
+}
+
+p {
+  display: inline-block;
+  color: #9c9c9c;
+  font-size: 1.2rem;
+}
+
+.linkBtn:hover {
+  color: #83521e;
+}
+
+.linkBtn.active {
+  color: #83521e;
+  background: #f1ede5;
+  border-radius: 5px;
 }
 
 .fade-enter {

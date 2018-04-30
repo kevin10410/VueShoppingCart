@@ -6,7 +6,6 @@
         <p class="warning">Loading...</p>
       </div>
     </div>
-    <app-title></app-title>
     <app-links></app-links>
     <transition name="fade" mode="out-in">
        <router-view></router-view>
@@ -14,7 +13,6 @@
   </div>
 </template>
 <script>
-import Title from "./components/Title";
 import Links from './components/RouterLink';
 export default {
   data() {
@@ -24,7 +22,6 @@ export default {
   },
   components: {
     appLinks: Links,
-    appTitle:Title,
   },
   computed:{
     loading() {
@@ -123,6 +120,7 @@ video {
   font: inherit;
   vertical-align: baseline;
   font-family: sans-serif;
+  
 }
 
 .contain {
@@ -145,7 +143,7 @@ video {
 }
 
 .warningTable{
-  width: 60%;
+  width: 40vh;
   height: 300px;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.7);

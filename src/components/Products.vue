@@ -89,10 +89,15 @@ export default {
 </script>
 
 <style scoped>
+.row{
+  margin: 0;
+}
+
+
 .logo {
   /* background: brown; */
   height: 150px;
-  background-image: url("../assets/ac-video-poster_848x480.jpg");
+  background-image: url("https://images.apple.com/ac/ac-video-posterframe/1.0/images/ac-video-poster_848x480.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -109,16 +114,22 @@ export default {
 }
 
 .pageSelector {
-  text-align: center;
+  display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
 }
 
 .pageSelector .btn {
-  width: 45px;
-  margin: 5px;
-  border: 1px solid black;
-  outline: none;
-  background: #ffffff;
-  color: black;
+  width: 35px;
+    font-size: 1.2rem;
+    margin: 5px;
+    border: 1px solid black;
+    outline: none;
+    background: #ffffff;
+    color: black;
+    padding: 0;
+    text-align: center;
 }
 
 .pageSelector .pick:hover {
@@ -143,6 +154,7 @@ export default {
 .productTable {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .productList {

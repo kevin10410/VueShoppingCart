@@ -1,7 +1,7 @@
 <template>
-      <li class="col-lg-3 col-md-6 col-sm-12 col-12 product">
+      <li class=" col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 product">
         <div class="box" :class="{selected:selected}">
-          <div class="shadow" @click="detailPage(item.Id)"></div>
+          <div class="shadow" @click="detailPage(item)"></div>
           <div class="productInfo">
             <img class="productPic" :src="`http://a.ecimg.tw/${item.picB}`">
             <p class="productName">{{item.name}}</p>
@@ -22,8 +22,7 @@ export default {
   props: ["item"],
   data() {
     return {
-      count: 0,
-
+      
     };
   },
   computed: {
@@ -31,56 +30,26 @@ export default {
       return this.$store.state.shoppingCart.some(item => {
         return item.Id === this.item.Id;
       });
-    },
-    toBuy() {
-        let buying = this.item;
-        buying.count = this.count;
-        return buying
     }
   },
   methods: {
-    addToCar() {
-      if (this.count !== 0) {
-        // console.log(this.count);
-        // console.log(this.item);
-        console.log(this.toBuy)
-        this.$store.commit("addItem", this.toBuy);
-      }
-    },
-    modifyNum() {
-        let index = this.$store.state.shoppingCart
-            .map(item => {
-              return item.Id;
-            })
-            .indexOf(this.item.Id);
-        if (this.count !==0) {
-        // let check = this.$store.state.shoppingCart.some(item => {
-        //   return item.id === this.item.Id;
-        // });
-        // if (check) {
-          
-          //   console.log(index);
-            this.$store.commit("replaceItem", { item: this.toBuy, index: index });
-        } else {
-            this.$store.commit('removeItem', index);
-        }
-    },
-    detailPage(id) {
+    detailPage(item) {
       this.$store.commit("goProduct");
-      this.$router.push(`/products/${id}`)
+      this.$store.commit("selectProduct", item);
+      this.$router.push(`/products/${item.Id}`);
     }
   },
-  mounted() {
-    if (this.selected) {
-      let index = this.$store.state.shoppingCart
-        .map(item => {
-            console.log()
-          return item.Id;
-        })
-        .indexOf(this.item.Id);
-      this.count = this.$store.state.shoppingCart[index].count;
-    }
-  }
+  // mounted() {
+  //   if (this.selected) {
+  //     let index = this.$store.state.shoppingCart
+  //       .map(item => {
+  //           console.log()
+  //         return item.Id;
+  //       })
+  //       .indexOf(this.item.Id);
+  //     this.count = this.$store.state.shoppingCart[index].count;
+  //   }
+  // }
 };
 </script>
 <style scoped>
@@ -91,6 +60,7 @@ export default {
 }
 
 .box{
+  height: calc(100% - 10px);
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -104,7 +74,7 @@ export default {
 }
 
 .box.selected .shadow {
-  background-color: rgba(255, 0, 0, 0.1)
+  background-color: rgba(23, 105, 229, 0.1);
 }
 
 .shadow {
@@ -122,37 +92,29 @@ export default {
   transition: background-color 0.2s linear, transform 0.2s linear;
 }
 
-.box:hover{
-  
-  transform: scale(1.05,1.05);
-}
-
-.box.selected {
-  background: #ffeaea;
-}
-
 .productInfo {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .productName {
-  font-size: 0.8rem;
-  height: 55px;
+  font-size: 1rem;
   margin: 10px 0 ;
   text-align: center;
 }
 
 .productPic {
-  width: 150px;
-  height: 150px;
+  width: 60%;
+  height: auto;
   margin: 5px 0;
 }
 
 .price {
   padding: 5px 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .buy {

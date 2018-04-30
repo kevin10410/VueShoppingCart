@@ -7,5 +7,4 @@ export const routes = [
     { path: '/page/:id', component: Products},
     { path: '/products/:id', component: Detail},
     { path: '/cart', component: ShoppingCart},
-    { path: '/VueShoppingCart', redirect: '/page/1'},
 ]
