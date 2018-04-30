@@ -13,6 +13,13 @@ export const store = new Vuex.Store({
         loading: false,
         currentType:'page',
         currentProduct:{},
+        currentBrand:'Apple',
+        logos:{
+            Apple:'https://images.apple.com/ac/ac-video-posterframe/1.0/images/ac-video-poster_848x480.jpg',
+            Samsung:'https://www.androidcentral.com/sites/androidcentral.com/files/topic_images/2014/Samsung-Logo.jpg',
+            Xiaomi:'http://global.mifile.cn/webfile/globalimg/zh/2014/about/about_index_01.jpg',
+            Huawei:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpUzpbRwdE1DHcnnll159c7tZmDS968IYmGdCLwJAyMTgkDAXi',
+        }
     },
     getters: {
         totalPrice: state => {
@@ -22,6 +29,9 @@ export const store = new Vuex.Store({
         },
         getCurrentDetail: state => {
             return state.currentProduct;
+        },
+        getLogo: state => {
+            return state.logos[state.currentBrand]
         }
     },
     mutations: {
@@ -74,6 +84,9 @@ export const store = new Vuex.Store({
             console.log('item', item)
             state.currentProduct = item;
             console.log(state.currentProduct);
+        },
+        selectBrand:(state, brand) => {
+            state.currentBrand = brand;
         }
     },
     actions: {
@@ -112,6 +125,9 @@ export const store = new Vuex.Store({
         },
         selectProduct: ({commit}, item) => {
             commit('selectProduct', item)
+        },
+        selectBrand: ({commit}, brand) => {
+            commit('selectBrand', brand)
         }
     }
 })

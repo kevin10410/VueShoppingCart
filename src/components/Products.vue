@@ -1,7 +1,15 @@
 <template>
     <div class="header row justify-content-center">
-        <div class="logo col-lg-10 col-md-10 col-sm-10 col-10">
-          <div class="shadow"></div>
+        <div class="brandSelector col-lg-10 col-md-10 col-sm-10 col-10">
+            <select v-model="brand" @change="changeBrand(brand)">
+            <option selected>Apple</option>
+            <option>Huawei</option>
+            <option>Samsung</option>
+            <option>Xiaomi</option>
+        </select>
+        </div>
+        <div class="logo col-lg-10 col-md-10 col-sm-10 col-10" :style="{backgroundImage:`url(${logo})`}">
+          <!-- <div class="shadow"></div> -->
         </div>
         <div class="pageSelector col-lg-10 col-md-10 col-sm-10 col-10">
             <button class="btn btn-default change" @click="changePage(selectPage - 1)"><i class="fas fa-caret-left"></i></button>
@@ -23,7 +31,9 @@ import axios from "axios";
 import singleProduct from "./singleProduct";
 export default {
   data() {
-    return {};
+    return {
+      brand: "Apple"
+    };
   },
   computed: {
     productList() {
@@ -37,6 +47,12 @@ export default {
     },
     showingPage() {
       return this.$store.state.showingPage;
+    },
+    currentBrand() {
+      return this.$store.state.currentBrand;
+    },
+    logo() {
+      return this.$store.getters.getLogo;
     }
   },
   components: {
@@ -51,9 +67,16 @@ export default {
       console.log(this.showingPage);
       console.log(this.selectPage);
     },
+    changeBrand(brand) {
+      this.$store.commit('selectBrand', brand);
+      this.getProductInfo(1);
+      console.log(brand);
+    },
     getProductInfo(page) {
       this.$store.commit("loadingSwitch");
-      let url = `https://cors-anywhere.herokuapp.com/http://ecshweb.pchome.com.tw/search/v3.3/all/results?q=Apple&page=${page}&sort=rnk/dc`;
+      let url = `https://cors-anywhere.herokuapp.com/http://ecshweb.pchome.com.tw/search/v3.3/all/results?q=${
+        this.currentBrand
+      }&page=${page}&sort=rnk/dc`;
       axios
         .get(url)
         .then(res => {
@@ -83,21 +106,21 @@ export default {
     }
   },
   mounted() {
+    this.brand = this.currentBrand;
     this.getProductInfo(this.selectPage);
   }
 };
 </script>
 
 <style scoped>
-.row{
+.row {
   margin: 0;
 }
-
 
 .logo {
   /* background: brown; */
   height: 150px;
-  background-image: url("https://images.apple.com/ac/ac-video-posterframe/1.0/images/ac-video-poster_848x480.jpg");
+  /* background-image: url("https://images.apple.com/ac/ac-video-posterframe/1.0/images/ac-video-poster_848x480.jpg"); */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -115,21 +138,21 @@ export default {
 
 .pageSelector {
   display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
 }
 
 .pageSelector .btn {
   width: 35px;
-    font-size: 1.2rem;
-    margin: 5px;
-    border: 1px solid black;
-    outline: none;
-    background: #ffffff;
-    color: black;
-    padding: 0;
-    text-align: center;
+  font-size: 1.2rem;
+  margin: 5px;
+  border: 1px solid black;
+  outline: none;
+  background: #ffffff;
+  color: black;
+  padding: 0;
+  text-align: center;
 }
 
 .pageSelector .pick:hover {
@@ -160,5 +183,17 @@ export default {
 .productList {
   width: 80%;
   padding: 10px 0;
+}
+
+.brandSelector select {
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #eee;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-align: center;
+}
+
+.brandSelector select option{
+  width: 100%;
 }
 </style>

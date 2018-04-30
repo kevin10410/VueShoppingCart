@@ -26,7 +26,6 @@
         </router-link>
         <p>|</p>
         </div>
-        
     </div>
     </transition>
 </template>
@@ -42,13 +41,13 @@ export default {
     currentType() {
       return this.$store.state.currentType;
     }
-  }
+  },
 };
 </script>
 
 <style scoped>
 .links {
-  padding: 10px 0 5px 0;
+  padding: 10px 0;
   text-align: center;
   margin: 0;
 }
@@ -81,6 +80,8 @@ p {
   background: #f1ede5;
   border-radius: 5px;
 }
+
+
 
 .fade-enter {
   opacity: 0;
