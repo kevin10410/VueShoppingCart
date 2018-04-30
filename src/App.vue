@@ -128,6 +128,7 @@ body{
 }
 
 .contain {
+  min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
