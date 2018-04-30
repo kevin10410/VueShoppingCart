@@ -231,7 +231,7 @@ p {
   outline: none;
   border: none;
   border-radius: 5px;
-  padding: 5px 50px;
+  padding: 12.5px 50px;
   background: #5d3b25;
   color: #fff;
 }
