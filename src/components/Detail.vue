@@ -105,7 +105,7 @@ export default {
 </script>
 <style scoped>
 .detail {
-  padding: 50px 0;
+  padding: 10px 0;
 }
 
 .links{
@@ -189,6 +189,7 @@ p {
 }
 
 .numButton {
+  width: 25px;
   padding: 4px 6.5px;
   border: 1px solid #ccc;
   background: #eee;
