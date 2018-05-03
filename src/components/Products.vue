@@ -58,6 +58,15 @@ export default {
   components: {
     appSingleProduct: singleProduct
   },
+  watch:{
+    '$route'(to, from) {
+      console.log('to', to);
+      console.log('from', from);
+      if(to.redirectedFrom) {
+        this.getProductInfo(1)
+      }
+    }
+  },
   methods: {
     changePage(page) {
       if (0 < page && page <= 100) {
