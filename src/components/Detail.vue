@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     currentPage() {
-      console.log(this.$store.state.currentPage);
+      // console.log(this.$store.state.currentPage);
       return this.$store.state.currentPage;
     },
     currentProduct() {

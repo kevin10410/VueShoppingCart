@@ -20,7 +20,7 @@ export default {
   computed: {
     shoppingCart() {
       return this.$store.state.shoppingCart;
-      console.log(this.$store.state.shoppingCart);
+      // console.log(this.$store.state.shoppingCart);
     },
     totalPrice() {
       return this.$store.getters.totalPrice;

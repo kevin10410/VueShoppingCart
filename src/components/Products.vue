@@ -60,8 +60,8 @@ export default {
   },
   watch:{
     '$route'(to, from) {
-      console.log('to', to);
-      console.log('from', from);
+      // console.log('to', to);
+      // console.log('from', from);
       if(to.redirectedFrom) {
         this.getProductInfo(1)
       }
@@ -72,9 +72,9 @@ export default {
       if (0 < page && page <= 100) {
         this.getProductInfo(page);
       }
-      console.log(this.previousPage);
-      console.log(this.showingPage);
-      console.log(this.selectPage);
+      // console.log(this.previousPage);
+      // console.log(this.showingPage);
+      // console.log(this.selectPage);
     },
     changeBrand(brand) {
       this.$store.commit('selectBrand', brand);
